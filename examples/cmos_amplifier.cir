@@ -1,9 +1,31 @@
-CMOS Common-Source Amplifier
-* Single-stage CMOS amplifier
-M1 out in vdd vdd pmos W=50u L=2u
-M2 out bias 0 0 nmos W=25u L=2u
-VDD vdd 0 DC 5V
-VIN in 0 DC 2.5V AC 0.1V
-VBIAS bias 0 DC 1.5V
-RL out vdd 10k
+* Faulty Full Adder
+* Inputs: A, B, CIN
+* Outputs: SUM, COUT
+
+VDD VDD 0 DC 5
+
+* Input stimuli
+VA A 0 PULSE(0 5 0n 1n 1n 40n 80n)
+VB B 0 PULSE(0 5 0n 1n 1n 20n 40n)
+VC CIN 0 PULSE(0 5 0n 1n 1n 10n 20n)
+
+* XOR1 = A XOR B
+BXOR1 XOR1 0 V = (V(A)*(5-V(B)) + (5-V(A))*V(B))/5
+
+* SUM = XOR1 XOR CIN
+BSUM SUM 0 V = (V(XOR1)*(5-V(CIN)) + (5-V(XOR1))*V(CIN))/5
+
+* FAULTY CARRY OUTPUT
+* Correct carry should be:
+* (A&B) + (A&CIN) + (B&CIN)
+* Fault injected: only A&B is used
+BCOUT COUT 0 V = IF(V(A)>2.5 && V(B)>2.5, 5, 0)
+
+.tran 1n 100n
+
+.control
+run
+plot V(A) V(B) V(CIN) V(SUM) V(COUT)
+.endc
+
 .end
