@@ -1,0 +1,9 @@
+CMOS Common-Source Amplifier
+* Single-stage CMOS amplifier
+M1 out in vdd vdd pmos W=50u L=2u
+M2 out bias 0 0 nmos W=25u L=2u
+VDD vdd 0 DC 5V
+VIN in 0 DC 2.5V AC 0.1V
+VBIAS bias 0 DC 1.5V
+RL out vdd 10k
+.end

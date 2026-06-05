@@ -1,0 +1,12 @@
+CMOS Differential Pair
+* Differential input pair
+M1 out1 in1 tail vdd pmos W=30u L=1u
+M2 out2 in2 tail vdd pmos W=30u L=1u
+M3 tail bias 0 0 nmos W=60u L=2u
+M4 out1 bias 0 0 nmos W=15u L=1u
+M5 out2 bias 0 0 nmos W=15u L=1u
+VDD vdd 0 DC 5V
+VIN1 in1 0 DC 2.5V
+VIN2 in2 0 DC 2.5V
+VBIAS bias 0 DC 1.0V
+.end

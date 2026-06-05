@@ -1,0 +1,7 @@
+CMOS Inverter Circuit
+* Basic CMOS Inverter
+M1 out in vdd vdd pmos W=20u L=1u
+M2 out in gnd gnd nmos W=10u L=1u
+VDD vdd 0 DC 5V
+VIN in 0 DC 2.5V
+.end

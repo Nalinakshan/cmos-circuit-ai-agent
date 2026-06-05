@@ -1,0 +1,10 @@
+CMOS NOR Gate
+* 2-Input NOR Gate
+M1 n1 a vdd vdd pmos W=20u L=1u
+M2 out b n1 vdd pmos W=20u L=1u
+M3 out a 0 0 nmos W=10u L=1u
+M4 out b 0 0 nmos W=10u L=1u
+VDD vdd 0 DC 5V
+VA a 0 DC 2.5V
+VB b 0 DC 2.5V
+.end
